@@ -95,4 +95,16 @@
  ### 八、线上部署
  #### 阿里云部署
  
-
+------2018-12-04-----
+ ### 远程分支合并dev分支
+ #### 先创建一个dev
+ ##### git checkout -b dev
+ ##### git push origin head -u
+ ##### git branch 
+ ##### git push origin dev
+ #### 合并
+ ##### git checkout dev
+ ##### git pull origin dev
+ ##### git checkout master
+ ##### git merge dev
+ ##### git push origin master
