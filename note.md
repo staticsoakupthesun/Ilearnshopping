@@ -266,3 +266,15 @@
   PRIMARY KEY(`id`)
  )ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
  ```
+ ### 项目架构--四层架构
+ ```
+ 视图层
+ 控制层 controller 接受视图层传递的数据同时处理业务逻辑
+ 业务逻辑层service
+   接口和实现类
+ Dao层
+ ```
+ ### Mybatis-generator插件
+ ####注意mysql jar包路径
+ ### 搭建ssm框架
+ #### 引入依赖包
