@@ -161,7 +161,7 @@
  `update_time` datetime   comment '修改时间',
    PRIMARY KEY(`id`)
  )ENGINE=InnoDB DEFAULT CHARSET UTF8
- ```
+ 
  
                     id     parent_id
  电子产品    1       1         0
@@ -175,8 +175,7 @@
  mate系列    4       9         6
  
  查询电子产品的商品----> 递归
-
- 
+``` 
  
  
  
