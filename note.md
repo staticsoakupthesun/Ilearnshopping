@@ -270,11 +270,31 @@
  ```
  视图层
  控制层 controller 接受视图层传递的数据同时处理业务逻辑
+ 
+ 
  业务逻辑层service
+ 业务逻辑是负责具体的业务逻辑的，业务逻辑层调用DAO层进行数据的处理
    接口和实现类
  Dao层
+ 主要是和数据层之间进行交互的，对数据库的增删改查
+ RestController  从前端返回的是json数据
+ 
  ```
  ### Mybatis-generator插件
+ #### 一键生成dao接口，实体类，映射文件，sql文件
  ####注意mysql jar包路径
  ### 搭建ssm框架
+ ```
+ generatorConfig文件
+  配置mysql的驱动包jar  本地找到驱动包的位置  注意文件位置加 /
+  实体类  targetPackage放到那个包下  targetProject项目目录
+  配置数据表  tableName数据库表的名称   domainObjectName实体类的名称 几个表写几个
+  pom.xml文件中配置所需要的配置
+  拷贝spring和springmvc mybatis-config文件
+  mybatis-config不用改动
+  spring  连接池修改    配置mybatis Dao接口的代理实现类 文件中只有dao接口没有实现类，通过这个可以自动生成实现类
+                      value dao接口的包名
+  
+ ```
  #### 引入依赖包
+ #### springMVC框架其实就是管理controller，所以扫描注解的时候只扫描controller包中的就可以了
