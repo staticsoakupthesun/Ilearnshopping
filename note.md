@@ -130,7 +130,7 @@
  `update_time` datetime   comment '修改时间',
  PRIMARY KEY(`id`),
  UNIQUE KEY `user_name_index`(`username`) USING BTREE
- )ENGINE=InnoDB DEFAULT CHARSET UTF8
+ )ENGINE=InnoDB DEFAULT CHARSET=UTF8
  ```
  ### 类别表
  ```
@@ -142,7 +142,7 @@
  `create_time` datetime   comment '创建时间',
  `update_time` datetime   comment '修改时间',
  PRIMARY KEY(`id`)
- )ENGINE=InnoDB DEFAULT CHARSET UTF8
+ )ENGINE=InnoDB DEFAULT CHARSET =TF8
  ```
  ### 商品表
  ```
@@ -160,7 +160,7 @@
  `create_time` datetime   comment '创建时间',
  `update_time` datetime   comment '修改时间',
    PRIMARY KEY(`id`)
- )ENGINE=InnoDB DEFAULT CHARSET UTF8
+ )ENGINE=InnoDB DEFAULT CHARSET =UTF8
  
  
                     id     parent_id
@@ -191,7 +191,7 @@
   `update_time` datetime   comment '修改时间',
     PRIMARY KEY(`id`),
     key `user_id_index`(`user_id`) USING BTREE
-   )ENGINE=InnoDB DEFAULT CHARSET UTF8
+   )ENGINE=InnoDB DEFAULT CHARSET=UTF8
    ```
  ### 订单表
  ```
@@ -213,7 +213,7 @@
  `uodate_time`  datetime default null comment'更新时间',
   PRIMARY KEY(`id`),
   UNIQUE KEY `oreder_no_index`(`order_no`) USING BTREE
-  )ENGINE=InnoDB DEFAULT CHARSET UTF8
+  )ENGINE=InnoDB DEFAULT CHARSET=UTF8
   ```
  ### 订单明细表
  ```
@@ -232,7 +232,7 @@
  PRIMARY KEY(`id`),
  KEY `oreder_no_index`(`order_no`) USING BTREE,
  KEY `order_no_user_id_index`(`order_no`,`user_id`) USING BTREE
- )ENGINE=InnoDB DEFAULT CHARSET UTF8
+ )ENGINE=InnoDB DEFAULT CHARSET=UTF8
 ``` 
  ### 支付表
  ```
@@ -246,7 +246,7 @@
   `create_time`  datetime default null comment'已创建时间',
   `uodate_time`  datetime default null comment'更新时间',
   PRIMARY KEY(`id`)
-  )ENGINE=InnoDB DEFAULT CHARSET UTF8
+  )ENGINE=InnoDB DEFAULT CHARSET=UTF8
  ```
  ### 地址表
  ```
