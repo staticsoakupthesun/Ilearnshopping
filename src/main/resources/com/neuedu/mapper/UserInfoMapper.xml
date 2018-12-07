@@ -36,8 +36,7 @@
       update_time)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{upwd,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{question,jdbcType=VARCHAR}, 
-      #{answer,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, 
-      #{updateTime,jdbcType=DATE})
+      #{answer,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER}, now(), now())
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.neuedu.pojo.UserInfo">
     <!--
@@ -56,6 +55,11 @@
       update_time = #{updateTime,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateUserupwd" parameterType="map">
+update neuedu_user set upwd=#{Newupwd}, update_time =now() where username=#{username}
+
+  </update>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
@@ -72,5 +76,28 @@
     -->
     select id, username, upwd, email, phone, question, answer, role, create_time, update_time
     from neuedu_user
+  </select>
+<!--parameterType字符串类型-->
+  <select id="checkUsername" parameterType="string" resultType="int">
+    select count(1) from neuedu_user where username=#{username}
+  </select>
+
+  <!--多个参数 返回值parameterType="map"，resultMap=""   原因插件做了映射 值调用上面的-->
+  <select id="selectUserByUsernameupwd" parameterType="map" resultMap="BaseResultMap">
+ select id, username, upwd, email, phone, question, answer, role, create_time, update_time
+    from neuedu_user where username=#{username}and upwd=#{upwd}
+  </select>
+
+  <select id="checkEmail" parameterType="string" resultType="int">
+ select count(1) from neuedu_user where email=#{email}
+  </select>
+
+  <select id="selectQusetionByUsername" parameterType="string" resultType="String">
+    select question from neuedu_user where username=#{username}
+
+  </select>
+
+  <select id="selectByUsernameQuestionAnswer" parameterType="map" resultType="int">
+    select count(1) from neuedu_user where username=#{username} and question=#{question} and answer=#{answer}
   </select>
 </mapper>

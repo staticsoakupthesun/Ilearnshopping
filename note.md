@@ -125,7 +125,7 @@
  `phone`    varchar(11) not null comment '联系方式',
  `question` varchar(100) not null comment '密保问题',
  `answer`   varchar(100) not null comment '答案',
- `role`     int(4) not null default 0  comment '用户角色',
+ `role`     int(4) not null default 0  comment '用户角色 0:普通用户 1:管理员',
  `create_time` datetime   comment '创建时间',
  `update_time` datetime   comment '修改时间',
  PRIMARY KEY(`id`),
@@ -266,6 +266,7 @@
   PRIMARY KEY(`id`)
  )ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
  ```
+ #### 冗余字段是指反复出现的，重复的字段。也就是说在数据库中如果表a出现过字段b，表c再出现字段b，那么字段b就可以被看作是冗余字段了。
  ### 项目架构--四层架构
  ```
  视图层
@@ -298,3 +299,43 @@
  ```
  #### 引入依赖包
  #### springMVC框架其实就是管理controller，所以扫描注解的时候只扫描controller包中的就可以了
+ 
+ -----------2018-12-06------------
+ ### 0000000
+ ```
+ 连接池换成alibaba 删除c3p0
+ 写service接口和实现类 
+ 测试
+ 
+ 封装返回前端的高夫用对象
+ 三个字段：status状态  data返回接口数据  msg接口的提示信息  私有的有参无参的构造方法  公有的共外部调用的方法
+ 一、
+ 判断接口是否调用成功 status是否为空
+ 注解@JsonIgnore：ServerResponse转json的时候isSuccess字段忽略掉
+ 成功  接口调用成功 状态为0
+ 二、
+ 失败  2情况
+ 1：状态等于1
+ 
+ 2：只有一个状态
+ 状态+提示
+ 
+ 
+ 实现注册接口的步骤：
+ step1:参数的非空校验
+ step2:判断用户名是否已经存在
+ step3:判断邮箱是否已经存在
+ step4:注册
+ step5:返回结果
+ 
+ 
+ isBlank判断是否为空的语句  isEmpty 空格不为空 ： 区别
+  ResponseCode枚举类的作用：
+ 定义响应状态码 定义为枚举类型  多种状态码可以定义更细一些
+ 实现类调用值通过ResponseCode封装好的进行调用枚举类型  这样每个错误信息都返回一个状态码
+ MD5Utils类的作用：
+  MD5加密工具类   特点：不可逆，无法通过密文得到原始密码
+  修改注册接口，进行数据库密码加密  把没有加密的密码重新赋值
+  在登录之前进行密码加密，要不然提示密码错误
+ ```
+ 
