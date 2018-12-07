@@ -30,9 +30,13 @@ public interface IUserService {
      ServerResponse forget_get_question(String username);
 
     //接口2：提交问题答案
-     ServerResponse forget_check_qanswer(String username,String question,String answer);
+     ServerResponse forget_check_answer(String username,String question,String answer);
 
     //接口3：成功-->重设密码
      ServerResponse forget_reset_password(String username,String newUpwd,String forgetToken);
+
+
+     //登录状态下重置密码接口
+     ServerResponse reset_password(UserInfo userInfo,String passwordOld,String passwordNew);
 }
 

@@ -101,7 +101,7 @@ public class UserController {
      * **/
     @RequestMapping(value = "forget_check_answer.do")
     public  ServerResponse forget_check_answer(String username,String question,String answer){
-        ServerResponse serverResponse=userService.forget_check_qanswer(username,question,answer);
+        ServerResponse serverResponse=userService.forget_check_answer(username,question,answer);
         return serverResponse;
     }
     /**
@@ -112,5 +112,28 @@ public class UserController {
         ServerResponse serverResponse=userService.forget_reset_password(username,upwd,forgetToken);
         return serverResponse;
     }
+      /**
+      *
+      * 退出登录
+      * **/
+     @RequestMapping(value = "logout.do")
+     public  ServerResponse logout(HttpSession session){
+        session.removeAttribute(Const.CURRENTUSER);
+         return ServerResponse.createServerResponseBySucess();
+     }
 
+     /**
+      * 登录状态下重置密码
+      * 旧密码校验
+      * **/
+     @RequestMapping(value = "reset_password.do")
+     public ServerResponse reset_password(HttpSession session,String passwordOld,String passwordNew){
+         Object o =session.getAttribute(Const.CURRENTUSER);
+         if (o != null &&  o instanceof UserInfo){
+             UserInfo userInfo=(UserInfo) o;
+            //调用service层
+           return userService.reset_password(userInfo,passwordOld,passwordNew);
+         }
+         return ServerResponse.createServerResponseByError(ResponseCode.USER_NOT_LOGIN.getStatus(),ResponseCode.USER_NOT_LOGIN.getMsg());
+     }
 }

@@ -24,10 +24,16 @@ public class TokenCache {
                 }
             });
 
+    /**
+     * 向缓存添加键值对
+     * **/
     public static void set(String key,String value){
         localCache.put(key, value);
     }
 //添加是键值对
+    /**
+     * 获取缓存值
+     * **/
     public static String get(String key){
         String value = null;
         try {

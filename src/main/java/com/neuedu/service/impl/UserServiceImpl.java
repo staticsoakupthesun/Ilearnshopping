@@ -153,7 +153,7 @@ public class UserServiceImpl implements IUserService {
      * 提交问题答案
      * **/
     @Override
-    public ServerResponse forget_check_qanswer(String username, String question, String answer) {
+    public ServerResponse forget_check_answer(String username, String question, String answer) {
         //step1：参数校验
         if (username==null || username.equals("")){
             return ServerResponse.createServerResponseByError("用户名不能为空");
@@ -207,6 +207,30 @@ public class UserServiceImpl implements IUserService {
             return ServerResponse.createServerResponseBySucess("密码修改成功");
         }
         return ServerResponse.createServerResponseByError("密码修改失败");
+    }
+     /**
+      * 登录状态下重置密码
+      * **/
+    @Override
+    public ServerResponse reset_password(UserInfo userInfo,String passwordOld, String passwordNew) {
+       //step1：参数非空校验
+        if (StringUtils.isBlank(passwordOld) || StringUtils.isBlank(passwordNew)){
+            return ServerResponse.createServerResponseByError("参数不能为空");
+        }
+        //step2：校验旧密码是否正确
+       UserInfo userInfoOld= userInfoMapper.selectUserByUsernameupwd(userInfo.getUsername(),MD5Utils.getMD5Code(passwordOld));
+        if (userInfoOld == null){
+            return ServerResponse.createServerResponseByError("旧密码错误");
+        }
+
+        //step3：修改密码
+       int count= userInfoMapper.updateUserupwd(userInfo.getUsername(),MD5Utils.getMD5Code(passwordNew));
+        //step4：返回结果
+        if (count <=0){
+            return ServerResponse.createServerResponseByError("密码修改失败");
+
+        }
+        return  ServerResponse.createServerResponseBySucess("密码修改成功");
     }
 }
 
