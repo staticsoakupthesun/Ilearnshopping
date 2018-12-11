@@ -340,5 +340,18 @@
   
   UUID.randomUUID().toString() 保证唯一 UUID生成的是唯一的 随机生成字符串
   token:存放UUID随机数的一个介质，通过token把他调取出来
+  横向越权，纵向越权安全漏洞 防止同级用户越权
+  纵向越权：低级别攻击者尝试访问高级别用户的资源
+ ```
+ #### 管理员登录
+ ##### 和员工登录类似，分配了一个权限
+ ##### 类别管理
+ ```
+ 
+ 增加品类子节点中传值: 如果这个节点可传可不传，使用@RequestParam(required = false,defaultValue = "0") required = ture  必须传
+ @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL):ServerResponse对象转化为字符串的时候非空字段不会进行转化 过滤掉
+
+ 时间直接用mysql里面的方法now(),前端在进行注册的时间直接用时间函数就好,不用再传时间了
+ 
  ```
  

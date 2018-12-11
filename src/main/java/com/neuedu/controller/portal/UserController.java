@@ -24,7 +24,7 @@ public class UserController {
 
       ServerResponse serverResponse= userService.login(username,upwd);
       if (serverResponse.isSuccess()){
-          //k 是用户信息和vule   如果成功保存到session中
+          //k 是用户信息和value   如果成功保存到session中
           session.setAttribute(Const.CURRENTUSER,serverResponse.getData());
       }
       return serverResponse;
@@ -119,7 +119,7 @@ public class UserController {
      @RequestMapping(value = "logout.do")
      public  ServerResponse logout(HttpSession session){
         session.removeAttribute(Const.CURRENTUSER);
-         return ServerResponse.createServerResponseBySucess();
+         return ServerResponse.createServerResponseBySucess("退出登录成功");
      }
 
      /**

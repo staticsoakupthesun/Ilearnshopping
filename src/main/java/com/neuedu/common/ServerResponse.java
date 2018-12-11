@@ -2,6 +2,10 @@ package com.neuedu.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.neuedu.pojo.Category;
+
+import java.util.List;
+import java.util.Set;
 
 //封装返回前的高复用对象
 //注解含义：ServerResponse对象转化为字符串的时候非空字段不会进行转化 过滤掉
@@ -41,8 +45,9 @@ public class ServerResponse<T> {
 
     /**
     *成功  接口调用成功 状态为0
-    * */
-public static ServerResponse createServerResponseBySucess(){
+    *
+     * @param categoryList*/
+public static ServerResponse createServerResponseBySucess(Set<Integer> categoryList){
     return new ServerResponse(Const.SUCCESS_CODE);
 }
 public static ServerResponse createServerResponseBySucess(String msg){
