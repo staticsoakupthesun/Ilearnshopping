@@ -19,7 +19,7 @@ public class UploadController {
     /**
      * 2中发送传送方式
      * **/
-    //浏览器通过get请求发送
+    //浏览器通过get请求发送  主图是子图的第一张
     @RequestMapping(value = "upload",method = RequestMethod.GET)
     public String upload(){
         return "upload";

@@ -52,7 +52,7 @@ public class IProductServiceImpl implements IProductService {
         //step2：主图的构成sub_images-->1.jpg,2.jpg,3.png
         String subImages=product.getSubImages();
         //得到一个数组
-        if (subImages!=null && subImages.equals("")){
+        if (subImages!=null && !subImages.equals("")){
            String[] subImageArr=subImages.split(",");
            if (subImageArr.length>0){
                //设置商品主图
@@ -200,7 +200,7 @@ public class IProductServiceImpl implements IProductService {
         //模糊查询通过id或者name
         PageHelper.startPage(pageNum,pageSize);
         //不等于空和不等于空字符串
-        if (productName!=null &&productName.equals("")){
+        if (productName!=null && !productName.equals("")){
             productName="%"+productName+"%";
         }
         List<Product> productList= productMapper.findProductByProductIdAndProductName(productId,productName);
@@ -273,6 +273,9 @@ public class IProductServiceImpl implements IProductService {
         //step：返回结果
         return ServerResponse.createServerResponseBySucess(null,productDetailVO);
     }
+    /**
+     * 前台-搜索
+     * **/
 
     @Override
     public ServerResponse list_portal(Integer categoryId, String keyword, Integer pageNum, Integer pageSize, String orderBy) {
@@ -304,7 +307,7 @@ public class IProductServiceImpl implements IProductService {
         }
         //step3：keyword查询
 
-        if (keyword==null || keyword.equals("")){
+        if (keyword!=null && !keyword.equals("")){
             keyword="%"+keyword+"%";
         }
         //orderBy需要排序 有可能是空字符串不需要排序 否则需要排序

@@ -13,6 +13,24 @@ public class CartProductVO {
     private BigDecimal productTotalPrice;
     private Integer productStock;
     private  Integer productChecked;
+    private String limitQuantity;
+    private BigDecimal productPrice;
+
+    public BigDecimal getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public String getLimitQuantity() {
+        return limitQuantity;
+    }
+
+    public void setLimitQuantity(String limitQuantity) {
+        this.limitQuantity = limitQuantity;
+    }
 
     private Integer id;
 

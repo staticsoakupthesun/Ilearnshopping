@@ -66,4 +66,115 @@ public enum  ResponseCode {
             this.desc = desc;
         }
     }
+
+    public enum CartCheckedEnum{
+        PRODUCT_CHECKED(1,"已勾选"),
+        PRODUCT_UNCHECKED(0,"未勾选"),
+
+        ;
+        private int code;
+        private  String desc;
+        CartCheckedEnum(int code,String desc){
+            this.code=code;
+            this.desc=desc;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        public void setCode(int code) {
+            this.code = code;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
+    }
+    public enum OrderStatusEnum{
+        ORDER_CANCELED(0,"已取消"),
+        ORDER_UN_PAY(10,"未付款"),
+        ORDER_PAYED(20,"已付款"),
+        ORDER_SEND(40,"已发货"),
+        ORDER_SUCCESS(50,"交易成功"),
+        ORDER_CLOSED(60,"交易失败"),
+        ;
+        private int code;
+        private  String desc;
+        OrderStatusEnum(int code,String desc){
+            this.code=code;
+            this.desc=desc;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        public void setCode(int code) {
+            this.code = code;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
+
+        //code代表状态
+        public static OrderStatusEnum codeOf(Integer code){
+           //遍历枚举de 方法values
+            for (OrderStatusEnum orderStatusEnum:values()) {
+                //getCode()枚举对象
+                if (code==orderStatusEnum.getCode()){
+                    return orderStatusEnum;
+                }
+            }
+            return null;
+        }
+    }
+
+    public enum PayEnum{
+        ONLINE(1,"线上支付"),
+
+        ;
+        private int code;
+        private  String desc;
+        PayEnum(int code,String desc){
+            this.code=code;
+            this.desc=desc;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        public void setCode(int code) {
+            this.code = code;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
+        //code代表状态
+        public static PayEnum codeOf(Integer code){
+            //遍历枚举de 方法values
+            for (PayEnum payEnum:values()) {
+                //getCode()枚举对象
+                if (code==payEnum.getCode()){
+                    return payEnum;
+                }
+            }
+            return null;
+        }
+    }
 }

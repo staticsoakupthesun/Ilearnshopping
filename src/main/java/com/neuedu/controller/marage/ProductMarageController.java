@@ -54,9 +54,9 @@ public class ProductMarageController {
         //调用service层增加或者更新
         return iProductService.set_sale_status(productId,pstatus);
     }
-/**
- * 查看商品详情
- * **/
+      /**
+        * 查看商品详情
+        * **/
     @RequestMapping(value ="detail.do" )
     public ServerResponse detail(HttpSession session,Integer productId){
         //判断用户是否登录，并且有管理员权限
@@ -94,7 +94,7 @@ public class ProductMarageController {
      * **/
     @RequestMapping(value ="search.do" )
     public ServerResponse search(HttpSession session,
-                               @RequestParam(value = "productId",required = false) Integer productId,
+                               @RequestParam(value = "productId",required = false) Integer categoryId,
                                @RequestParam(value = "productName",required = false) String productName,
                                @RequestParam(value = "pageNum",required = false,defaultValue = "1") Integer pageNum,
                                @RequestParam(value = "pageSize",required = false,defaultValue = "10") Integer pageSize){
@@ -107,10 +107,8 @@ public class ProductMarageController {
             return ServerResponse.createServerResponseByError(ResponseCode.NO_PRIVILEGE.getStatus(), ResponseCode.NO_PRIVILEGE.getMsg());
         }
         //调用service层增加或者更新
-        return iProductService.search(productId,productName,pageNum,pageSize);
+        return iProductService.search(categoryId,productName,pageNum,pageSize);
     }
-    /**
-     *
-     * **/
+
 
 }

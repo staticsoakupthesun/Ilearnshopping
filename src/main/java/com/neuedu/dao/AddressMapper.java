@@ -1,6 +1,8 @@
 package com.neuedu.dao;
 
 import com.neuedu.pojo.Address;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface AddressMapper {
@@ -43,4 +45,10 @@ public interface AddressMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(Address record);
+    int updateBySelectiveKey(Address address);
+    /**
+     * 删除userId和shippingId
+     * ***/
+    int deleteByUserIdAndShipping(@Param("userId") Integer userId,
+                                  @Param("shippingId") Integer shippingId);
 }
